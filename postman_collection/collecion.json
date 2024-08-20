@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "4bafbeb7-3a54-4a80-8eaf-d6559e6de926",
+		"name": "Payment Exercise API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26456177"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jonn\",\r\n    \"surname\": \"Doe\",\r\n    \"gsmNumber\": \"+905000000000\",\r\n    \"email\": \"test@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{root}}/auth/register",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@mail.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{root}}/auth/login",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "bulkAdd",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"name\": \"Binocular\",\r\n            \"category1\": \"Collectibles\",\r\n            \"category2\": \"Accessories\",\r\n            \"itemType\": \"PHYSICAL\",\r\n            \"price\": 0.3\r\n        },\r\n        {\r\n            \"name\": \"Game code\",\r\n            \"category1\": \"Game\",\r\n            \"category2\": \"Online Game Items\",\r\n            \"itemType\": \"VIRTUAL\",\r\n            \"price\": 0.5\r\n        },\r\n        {\r\n            \"name\": \"Usb\",\r\n            \"category1\": \"Electronics\",\r\n            \"category2\": \"Usb / Cable\",\r\n            \"itemType\": \"PHYSICAL\",\r\n            \"price\": 0.2\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{root}}/product/bulkAdd",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"product",
+								"bulkAdd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{root}}/product/getAll",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"product",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "payment",
+			"item": [
+				{
+					"name": "threeds",
+					"item": [
+						{
+							"name": "initialize",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"paymentCard\": {\r\n        \"cardHolderName\": \"John Doe\",\r\n        \"cardNumber\": \"5528790000000008\",\r\n        \"expireMonth\": \"12\",\r\n        \"expireYear\": \"2030\",\r\n        \"cvc\": \"123\",\r\n        \"registerCard\": \"0\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{root}}/payment/threeds/initialize",
+									"protocol": "http",
+									"host": [
+										"{{root}}"
+									],
+									"path": [
+										"payment",
+										"threeds",
+										"initialize"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "nonThreeds",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"paymentCard\": {\r\n        \"cardHolderName\": \"John Doe\",\r\n        \"cardNumber\": \"5528790000000008\",\r\n        \"expireMonth\": \"12\",\r\n        \"expireYear\": \"2030\",\r\n        \"cvc\": \"123\",\r\n        \"registerCard\": \"0\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://{{root}}/payment/nonThreeds/create",
+									"protocol": "http",
+									"host": [
+										"{{root}}"
+									],
+									"path": [
+										"payment",
+										"nonThreeds",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"66c24f6e7684f2017286d926\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{root}}/cart/add",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"66c24f6e7684f2017286d926\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{root}}/cart/add",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"cart",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identityNumber\": \"10000000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://{{root}}/profile/update",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"profile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{root}}/profile/getProfile",
+							"protocol": "http",
+							"host": [
+								"{{root}}"
+							],
+							"path": [
+								"profile",
+								"getProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
