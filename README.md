@@ -8,6 +8,8 @@ This project is created to exercise payment systems using iyzico.
 ## Backend (NodeJs)
 Backend API is being developed using NodeJS. 
 
+To test endpoints you can use postman collection in postman_collection/collecion.json (the file can be inaccurate with the recent changes.)
+
 ## Mobile (Flutter)
 Mobile apps are being developed using Flutter.
 
